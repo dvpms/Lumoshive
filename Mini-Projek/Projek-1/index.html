@@ -9,15 +9,180 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Bootsrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="./assets/styles/style.css">
 </head>
 <body>
-    <nav>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about-me">About me</a></li>
-        <li><a href="#project">Proyek</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </nav>
+     <!-- Navigasi -->
+        <header>
+            <div class="brand">
+                <h1>Devran P.M</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#tentang">Tentang Saya</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Hubungi Saya</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Bagian Hero -->
+        <section id="home">
+            <div class="text-home">
+                <h3>PORTFOLIO</h3>
+                <div class="title-home">
+                    <h1>Devran <br> Perdana Malik</h1>
+                    <div>
+                        <a href="#" class="btn-home">Download CV</a>
+                        <p>WEB DEVELOPER</p>
+                    </div>
+                </div>
+                <div class="media">
+                    <a href="http://"><i class="bi bi-linkedin"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href="http://"><i class="bi bi-whatsapp"></i></a>
+                    <a href=""><i class="bi bi-github"></i></a>
+                </div>
+            </div>
+
+            <div class="img-home">
+                <img src="./assets/images/img-header.jpg" alt="">
+            </div>
+        </section>
+
+        <!-- Tentang Saya -->
+        <section id="tentang">
+            <h2>Tentang Saya</h2>
+            <div class="content">
+                <div class="img-content">
+                    <img src="./assets/images/img-aboutme.png" alt="">
+                </div>
+                <div class="text-content">
+                    <h2>Seorang pengembang website <br> dan mahasiswa</h2>
+                    <p>Saat ini berfokus pada pengembangan
+                        front-end website dengan teknologi
+                        React yang dapat menjadikan website
+                        lebih interaktif dan efisien dalam
+                        pembuatannya
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section id="portfolio">
+            <h2 class="arvo">Portfolio</h2>
+            <article class="card">
+                <div class="project-img">
+                    <div class="img-side1">
+                        <img src="./assets/images/img-lapt1.png" alt="">
+                    </div>
+                    <div class="img-side2">
+                        <img src="./assets/images/img-port1.png" alt="">
+                    </div>
+                </div>
+                <h2 class="arvo">Projek-1</h2>
+            </article>
+            <article class="card">
+                <div class="project-img">
+                    <div class="img-side1">
+                        <img src="./assets/images/img-lapt2.png" alt="">
+                    </div>
+                    <div class="img-side2">
+                        <img src="./assets/images/img-port2.png" alt="">
+                    </div>
+                </div>
+                <h2 class="arvo">Projek-2</h2>
+            </article>
+        </section>
+
+        <!-- Testimoni -->
+        <div class="testimoni-container">
+            <div class="testimoni">
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                </div>   
+    
+                <p>"Slate helps you see how many more days you need to work to reach your financial goal for the month and year."</p>
+                <div class="profile">   
+    
+                    <img src="./assets/images/testi.png" alt="Regina Miles">
+                    <div>
+                        <h3>Regina Miles</h3>
+                        <p>Designer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimoni">
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi badge"></i>
+                </div>  
+    
+                <p>"Slate helps you see how many more days you need to work to reach your financial goal for the month and year."</p>
+                <div class="profile">   
+    
+                    <img src="./assets/images/testi.png" alt="Regina Miles">
+                    <div>
+                        <h3>Regina Miles</h3>
+                        <p>Designer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimoni">
+                <div class="rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                </div>
+    
+                <p>"Slate helps you see how many more days you need to work to reach your financial goal for the month and year."</p>
+                <div class="profile">
+    
+                    <img src="./assets/images/testi.png" alt="Regina Miles">
+                    <div>
+                        <h3>Regina Miles</h3>
+                        <p>Designer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hubungi Saya -->
+        <section id="contact">
+            <div class="img-contact">
+                <img src="./assets/images/img.-contact.jpg" alt="">
+            </div>
+            <div class="text-contact">
+                <p class="arvo">Mari Bekerja <br> Bersama</p>
+                <div class="note">
+                    <p><strong>Alamat</strong>   <br>Jl. Kecapi No. 123, Surakarta, <br>Jawa Tengah, Indonesia, 12345</p>
+                    <p><strong>Telepon:</strong> <br> (0361) 4567890</p>
+                    <p><strong>Email</strong> <br><a href="mailto:halo@situssupercanggih.co.id">devranmalik82@gmail.com</a></p>
+                </div>
+                </address>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Devran Perdana Malik</p>
+        </footer>
 </body>
 </html>
