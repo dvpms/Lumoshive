@@ -7,14 +7,17 @@ function prosesPromise() {
         } else {
           reject("Proses gagal!");
         }
-      }, 2000);
+      },2000);
+      console.log("Proses sedang berjalan....");
     });
   }
-  
-  prosesPromise()
-    .then((pesan) => {
-      console.log(pesan); // Jika resolved
-    })
-    .catch((error) => {
-      console.error(error); // Jika rejected
-    });
+
+  async function jalankanProses() {
+    try {
+      const hasil = await prosesPromise();
+      console.log(hasil); // Jika promise resolved
+    } catch (error) {
+      console.error(error); // Jika promise rejected
+    }
+  }
+  jalankanProses();
