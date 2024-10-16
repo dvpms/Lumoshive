@@ -173,15 +173,9 @@ const detailAddress = {
       },
     },
   } = detailAddress;
-  
-  let address = "";
-  
-  for (item of address_components) {
-    address += item.long_name + ", ";
-  }
-  
+
   const detailAddress2 = {
-    address: address,
+    address: address_components.map(item => item.long_name),
     longtitude: lng,
     latitude: lat,
     place_id,
