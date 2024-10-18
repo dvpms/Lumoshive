@@ -24,7 +24,10 @@
             <div class="brand">
                 <h1>Devran P.M</h1>
             </div>
-            <nav>
+            <div class="burger" id="burger">
+                <i class="bi bi-list"></i>
+            </div>
+            <nav id="nav">
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#tentang">Tentang Saya</a></li>
@@ -39,7 +42,7 @@
             <div class="text-home">
                 <h3>PORTFOLIO</h3>
                 <div class="title-home">
-                    <h1>Devran <br> Perdana Malik</h1>
+                    <h1>Devran Perdana Malik</h1>
                     <div>
                         <a href="#" class="btn-home">Download CV</a>
                         <p>WEB DEVELOPER</p>
@@ -66,7 +69,7 @@
                     <img src="./assets/images/img-aboutme.png" alt="">
                 </div>
                 <div class="text-content">
-                    <h2>Seorang pengembang website <br> dan mahasiswa</h2>
+                    <h2>Pengembang dan Pelajar</h2>
                     <p>Saat ini berfokus pada pengembangan
                         front-end website dengan teknologi
                         React yang dapat menjadikan website
@@ -80,7 +83,7 @@
         <!-- Portfolio -->
         <section id="portfolio">
             <h2 class="arvo">Portfolio</h2>
-            <article class="card">
+            <article class="project card">
                 <div class="project-img">
                     <div class="img-side1">
                         <img src="./assets/images/img-lapt1.png" alt="">
@@ -91,7 +94,7 @@
                 </div>
                 <h2 class="arvo">Projek-1</h2>
             </article>
-            <article class="card">
+            <article class="project card">
                 <div class="project-img">
                     <div class="img-side1">
                         <img src="./assets/images/img-lapt2.png" alt="">
@@ -105,7 +108,7 @@
         </section>
 
         <!-- Testimoni -->
-        <div class="testimoni-container">
+        <div class="testimoni-container card">
             <div class="testimoni">
                 <div class="rating">
                     <i class="bi bi-star-fill"></i>
@@ -113,11 +116,9 @@
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
-                </div>   
-    
+                </div>
                 <p>"Slate helps you see how many more days you need to work to reach your financial goal for the month and year."</p>
-                <div class="profile">   
-    
+                <div class="profile">
                     <img src="./assets/images/testi.png" alt="Regina Miles">
                     <div>
                         <h3>Regina Miles</h3>
@@ -132,11 +133,9 @@
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
                     <i class="bi badge"></i>
-                </div>  
-    
+                </div>
                 <p>"Slate helps you see how many more days you need to work to reach your financial goal for the month and year."</p>
-                <div class="profile">   
-    
+                <div class="profile">
                     <img src="./assets/images/testi.png" alt="Regina Miles">
                     <div>
                         <h3>Regina Miles</h3>
@@ -152,10 +151,8 @@
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
                 </div>
-    
                 <p>"Slate helps you see how many more days you need to work to reach your financial goal for the month and year."</p>
                 <div class="profile">
-    
                     <img src="./assets/images/testi.png" alt="Regina Miles">
                     <div>
                         <h3>Regina Miles</h3>
@@ -170,21 +167,21 @@
             <div class="img-contact">
                 <img src="./assets/images/img.-contact.jpg" alt="">
             </div>
-            <div class="text-contact">
-                <p class="arvo">Mari Bekerja <br> Bersama</p>
-                <div class="note">
-                    <p><strong>Alamat</strong>   <br>Jl. Kecapi No. 123, Surakarta, <br>Jawa Tengah, Indonesia, 12345</p>
-                    <p><strong>Telepon:</strong> <br> (0361) 4567890</p>
-                    <p><strong>Email</strong> <br><a href="mailto:halo@situssupercanggih.co.id">devranmalik82@gmail.com</a></p>
+            <div class="contact-container">
+                <div class="text-contact">
+                    <p class="arvo">Mari Bekerja <br> Bersama</p>
+                    <div class="note">
+                        <p><strong>Alamat</strong>   <br>Jl. Kecapi No. 123, Surakarta, <br>Jawa Tengah, Indonesia, 12345</p>
+                        <p><strong>Telepon:</strong> <br> (0361) 4567890</p>
+                        <p><strong>Email</strong> <br><a href="mailto:halo@situssupercanggih.co.id">devranmalik82@gmail.com</a></p>
+                    </div>
+                    </address>
                 </div>
-                </address>
-                <div class="container">
-                    <h2>Contact   
-             Me</h2>
-                    <form>
+                <div class="form-container">
+                    <h2>Contact Me</h2>
+                    <form id="contact-form">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your name"   
-             required>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
             
                         <label for="subject">Subject:</label>
                         <input type="text" id="subject" name="subject" placeholder="Enter subject" required>   
@@ -197,7 +194,7 @@
                         <button type="submit">Send Message</button>
                     </form>
                 </div>
-        
+
             </div>
             
         </section>
@@ -205,5 +202,8 @@
         <footer>
             <p>&copy; 2024 Devran Perdana Malik</p>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="./assets/formContact.js"></script>
+        <script src="./assets/burgerMenu.js"></script>
 </body>
 </html>
