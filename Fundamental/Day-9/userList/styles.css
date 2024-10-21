@@ -1,0 +1,177 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.search-container input {
+    padding: 10px;
+    font-size: 16px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.search-container button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
+
+.user-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Hanya 4 kolom */
+    gap: 20px;
+}
+
+
+.user-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.user-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.user-card h2 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+}
+
+.user-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Loading Spinner Styles */
+.loading {
+    display: none; /
+    text-align: center;
+    margin: 20px 0;
+}
+
+.loading .spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+}
+
+/* Pagination Styles */
+.pagination {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination button.disabled, 
+.pagination button.active {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination button:hover:not(.disabled):not(.active) {
+    background-color: #0056b3;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Media Query untuk layar lebih kecil */
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+    }
+
+    .search-container input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .user-list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .user-card img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .user-card h2 {
+        font-size: 16px;
+    }
+
+    .user-card p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-list {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    .user-card img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .user-card h2 {
+        font-size: 14px;
+    }
+
+    .user-card p {
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random User List</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Random User List</h1>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by name..." />
+        <button onclick="searchUser()">🔍</button>
+      </div>
+
+      <!-- Elemen Loading -->
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+      </div>
+
+      <!-- Daftar User -->
+      <div class="user-list" id="userList"></div>
+      <!-- Elemen Pagination -->
+      <div class="pagination" id="pagination">
+        <!-- Pagination buttons will be added here dynamically -->
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
