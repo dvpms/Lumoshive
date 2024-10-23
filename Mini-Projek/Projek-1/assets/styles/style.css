@@ -9,6 +9,10 @@ body {
   background-color: #f6f6f6;
 }
 
+h1{
+  
+}
+
 header {
   display: flex;
   flet-direction: column;
