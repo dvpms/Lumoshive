@@ -1,60 +1,61 @@
-// // function applyOperation(operate, num1, num2){
-// //     return operate(num1, num2);
-// // }
+// class CheckoutBook {
+//   constructor(title, userID){
+//     this.title = title;
+//     this.userID = userID;
+//   }
 
-// // function add(a, b) {
-// //   return a + b;
-// // }
+//   checkoutBook(userID){
+//     console.log(`Checkout Book${this.title} by ${userID}`);
+//   }
 
-// // function multiply(a, b) {
-// //   return a * b;
 // }
 
-// // // Penggunaan
-// // console.log(applyOperation(add, 5, 3)); // Output: 8
-// // console.log(applyOperation(multiply, 5, 3)); // Output: 15
+// class HitungDenda{
+//   constructor(book, dayslate){
+//     this.book = book;
+//     this.dayslate = dayslate;
+//   }
 
-// function filter(data, predicate) {
-//     return data.filter(predicate);
+//   hitungDenda(){
+//     const fee = this.dayslate * 2000;
+//     const formatter = new Intl.NumberFormat('id-ID', {
+//       style: 'currency',
+//       currency: 'IDR',
+//       minimumFractionDigits: 0,
+//     }).format(fee);
+//     console.log(`Total denda untuk buku ${this.book.title} dibayar adalah ${formatter}`);
+//   }
 // }
 
-// const numbers = [1, 2, 3, 4, 5];
+// let book1 = new CheckoutBook("Harry Potter", "John Doe");
+// let denda = new HitungDenda(book1, 5);
+// denda.hitungDenda();
 
-// function isEven(num) {
-//   return num % 2 === 0;
-// }
+class Movie {
+  constructor(title, genre,director, year) {
+    this.title = title;
+    this.genre = genre;
+    this.year = year;
+    this.director = director;
+  }
 
-// // Penggunaan
-// console.log(filter(numbers, isEven)); // Output: [2, 4]
-// function map(arr, operate){
-//     let result = [];
-//     for (item of arr) {
-//         result.push(operate(item));
-//     }
-//     return result;
-// }
-
-// const numbers = [1, 2, 3, 4];
-
-// function double(num) {
-//   return num * 2;
-// }
-
-// // Penggunaan
-// console.log(map(numbers, double)); // Output: [2, 4, 6, 8]
-function compose(fn1, fn2) {
-    
+  movieInfo(){
+    console.log(`Judul: ${this.title}, Genre: ${this.genre}, Tahun: ${this.year}, Director: ${this.director}`);
+  }
 }
 
-function addOne(x) {
-    return x + 1;
+class SaveMovie {
+  constructor(movie) {
+    this.movie = movie;
   }
-  
-  function square(x) {
-    return x * x;
+
+  saveToFile() {
+    console.log(`Saving movie: ${this.movie.title}, directed by ${this.movie.director}, released in ${this.movie.year}`);
   }
-  
-  // Penggunaan
-  const addOneAndSquare = compose(square, addOne);
-  console.log(addOneAndSquare(2)); // Output: 9
-  
+}
+
+
+let movie1 = new Movie("The Shawshank Redemption", "Drama", "Frank Darabont", 1994);
+let saveMovie = new SaveMovie(movie1);
+movie1.movieInfo();
+saveMovie.saveToFile()

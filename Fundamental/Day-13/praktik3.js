@@ -49,6 +49,7 @@ class Gudang {
 
     get listProduk() {
         return this.#listProduk;
+        
     }
 }
 
