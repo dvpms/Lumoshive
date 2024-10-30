@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function StudentForm() {
+export default function StudentForm({toggleModal}) {
   return (
     <div className="modal-overlay">
       <div class="modal-content">
@@ -11,6 +11,7 @@ export default function StudentForm() {
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
+            onClick={toggleModal}
           ></button>
         </div>
         <div class="modal-body">
