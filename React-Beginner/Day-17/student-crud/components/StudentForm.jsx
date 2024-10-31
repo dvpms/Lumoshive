@@ -100,7 +100,7 @@ export default function StudentForm({
               onClick={() => {
                 onSubmit();
                 toggleModal(false);
-              }}
+              }}w
               type="button"
               class="btn btn-warning"
             >
