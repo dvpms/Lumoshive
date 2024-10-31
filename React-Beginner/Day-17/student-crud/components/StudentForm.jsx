@@ -96,7 +96,14 @@ export default function StudentForm({
         </div>
         <div class="modal-footer">
           {isEdit ? (
-            <button type="button" class="btn btn-warning" onClick={onSubmit}>
+            <button
+              onClick={() => {
+                onSubmit();
+                toggleModal(false);
+              }}
+              type="button"
+              class="btn btn-warning"
+            >
               <i className="bi bi-pencil-square" /> Update
             </button>
           ) : (
