@@ -2,7 +2,7 @@
   margin: 10px 0;
 }
 
-.chat-message-cstm:nth-last-child(2){
+.chat-message-cstm{
   margin-bottom:150px;
 }
 
@@ -11,4 +11,10 @@
 }
 .rounded-ai-cstm{
   border-radius: 15px 15px 15px 0;
+}
+
+.loading-container{
+  display:grid;
+  justify-content:center;
+  text-align:center;
 }

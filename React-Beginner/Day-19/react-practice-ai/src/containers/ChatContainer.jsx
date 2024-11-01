@@ -3,6 +3,7 @@ import ChatInput from "../components/ChatInput";
 import ChatMessage from "../components/ChatMessage";
 import Navbar from "../components/Navbar";
 import { queryAI } from "../utils/api";
+import loadingSpinner from "../assets/Infinity-loading.gif";
 
 export default class ChatContainer extends Component {
   state = {
@@ -20,7 +21,7 @@ export default class ChatContainer extends Component {
     queryAI({ query }, this.props.token)
       .then((res) => {
         this.setState({
-          messages: [...this.state.messages, {query, data:res}],
+          messages: [...this.state.messages, { query, data: res }],
           query: "",
         });
       })
@@ -40,6 +41,7 @@ export default class ChatContainer extends Component {
     this.setState({ query: e.target.value });
   };
   render() {
+    const { loading } = this.state;
     return (
       <div>
         <Navbar setToken={this.props.setToken} />
@@ -49,13 +51,29 @@ export default class ChatContainer extends Component {
           onChange={this.handleChange}
           query={this.state.query}
         />
-        {this.state.messages.map((message, index) => (
-          <ChatMessage
-            key={index}
-            message={message.data.data}
-            query={message.query}
-          />
-        ))}
+        {loading ? (
+          <>
+            <div className="loading-container ">
+              <img
+                src={loadingSpinner}
+                alt="Loading..."
+                className="loading-image"
+              />
+                <h5 className=""><i className="bi bi-robot"></i> AI is thinking....</h5>
+            </div>
+          </>
+        ) : (
+          <>
+            {this.state.messages.map((message, index) => (
+              <ChatMessage
+                loading={this.state.loading}
+                key={index}
+                message={message.data.data}
+                query={message.query}
+              />
+            ))}
+          </>
+        )}
       </div>
     );
   }
