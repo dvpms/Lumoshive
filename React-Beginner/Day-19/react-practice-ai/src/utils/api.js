@@ -20,3 +20,15 @@ export const register = async (data) => {
   });
   return res.data;
 };
+
+export const queryAI = async (data, token) => {
+  const res = await axios.post(`${API_URL}/query`, data, {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "RJS1-202404",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  // console.log(res.data)
+  return res.data;
+};
