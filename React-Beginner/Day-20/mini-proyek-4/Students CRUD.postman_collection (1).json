@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "d246bec5-ef11-4a19-8fcf-fbd1b316b29e",
+		"name": "Students CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37511972"
+	},
+	"item": [
+		{
+			"name": "list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "akusianakgembala",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://lumoshive-academy-api.vercel.app/students",
+					"protocol": "https",
+					"host": [
+						"lumoshive-academy-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"students"
+					],
+					"query": [
+						{
+							"key": "find",
+							"value": "deni",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "akusianakgembala",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Deni\",\r\n    \"class\": \"XI MIPA 3\",\r\n    \"year\": \"2014\", // min 2000 max 2024\r\n    \"nim\": \"2232323\", // must be unique\r\n    \"guardian_name\": \"Siti\",\r\n    \"birthDate\": \"2000-12-20\", // https://www.iso.org/iso-8601-date-and-time-format.html\r\n    \"address\": \"Kebon jeruk Jakarta barat\", // min 20 character\r\n    \"gender\": \"male\" // male or female\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://lumoshive-academy-api.vercel.app/students",
+					"protocol": "https",
+					"host": [
+						"lumoshive-academy-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "akusianakgembala",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Deni Irawan Nugraha 2\",\r\n    \"class\": \"XI MIPA 3\",\r\n    \"year\": \"2014\",\r\n    \"nim\": \"2232323\",\r\n    \"guardian_name\": \"Siti\",\r\n    \"birthDate\": \"2000-12-20\",\r\n    \"address\": \"Kebon jeruk jakarta barat\",\r\n    \"gender\": \"male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://lumoshive-academy-api.vercel.app/students/2810b9b8-c296-46ec-8f69-679d86199f01",
+					"protocol": "https",
+					"host": [
+						"lumoshive-academy-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"students",
+						"2810b9b8-c296-46ec-8f69-679d86199f01"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "akusianakgembala",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://lumoshive-academy-api.vercel.app/students/2810b9b8-c296-46ec-8f69-679d86199f01",
+					"protocol": "https",
+					"host": [
+						"lumoshive-academy-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"students",
+						"2810b9b8-c296-46ec-8f69-679d86199f01"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "akusianakgembala",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://lumoshive-academy-api.vercel.app/students/a4998b8f-b99f-4292-aa50-88487b090c8a",
+					"protocol": "https",
+					"host": [
+						"lumoshive-academy-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"students",
+						"a4998b8f-b99f-4292-aa50-88487b090c8a"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
