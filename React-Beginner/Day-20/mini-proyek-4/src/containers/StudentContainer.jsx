@@ -107,7 +107,7 @@ export default class StudentContainer extends Component {
 
   handleEdit = (id) => {
     this.toggleModalForm();
-    this.setState({ isUpdate: !this.state.isUpdate });
+    this.setState({ isUpdate: true });
     detailStudent(id)
       .then((res) => {
         this.setState({ currentStudent: res.data });
