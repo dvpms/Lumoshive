@@ -20,7 +20,7 @@ export default function Navbar({ toggleModalForm }) {
               className="btn btn-primary me-3"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
-              onClick={() => toggleModalForm(false)}
+              onClick={() => toggleModalForm()}
             >
               <i className="bi bi-plus-square"></i> Add
             </button>

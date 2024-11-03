@@ -139,8 +139,17 @@ export default class StudentContainer extends Component {
       });
   };
 
-  toggleModalForm = () => {
-    this.setState({ modalForm: !this.state.modalForm });
+  toggleModalForm = (isUpdate = false) => {
+    this.setState({isUpdate, modalForm: !this.state.modalForm, currentStudent: {
+      name: "",
+      class: "",
+      year: "",
+      nim: "",
+      guardian_name: "",
+      birthDate: "",
+      address: "",
+      gender: "",
+    }});
   };
 
   render() {
