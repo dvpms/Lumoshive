@@ -90,7 +90,7 @@ table {
 .button-profile{
   display:flex;
   margin:10px 0;
-  justify-content:space-between;
+  justify-content:space-evenly;
 }
 
 .toga-icon{
@@ -157,4 +157,13 @@ table {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   padding: 20px;
   gap: 20px;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+label {
+  font-size: 16px;
+  margin-right: 20px;
 }

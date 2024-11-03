@@ -3,11 +3,11 @@ import Male from "../assets/male.png";
 import Female from "../assets/female.png";
 
 
-export default function StudentTable({ students }) {
+export default function StudentList({ students, onDelete, onDetail, handleEdit }) {
   return (
     <>
-      {students.map((student, index) => (
-        <div class="card-profile student-list" key={index}>
+      {students.map((student) => (
+        <div class="card-profile student-list" key={student.id}>
           <div className="header-profile">
             <div className="profile-img">
               {student.gender === "male" ? (
@@ -25,13 +25,18 @@ export default function StudentTable({ students }) {
           </div>
           <div className="button-profile">
             <div className="">
-              <button className="btn btn-primary shadow">
-                <i className="bi bi-info-circle"></i> Detail
+              <button className="btn btn-primary shadow" onClick={() => onDetail(student.id)}>
+                <i className="bi bi-info-circle"></i>
               </button>
             </div>
             <div className="">
-              <button className="btn btn-danger shadow">
-                <i className="bi bi-trash"></i>Delete
+              <button className="btn btn-danger shadow" onClick={() => onDelete(student.id)}>
+                <i className="bi bi-trash"></i>
+              </button>
+            </div>
+            <div className="">
+              <button className="btn btn-warning shadow" onClick={() => handleEdit(student.id)}>
+                <i className="bi bi-pencil"></i>
               </button>
             </div>
           </div>

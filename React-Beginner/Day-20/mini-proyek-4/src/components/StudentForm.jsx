@@ -2,38 +2,35 @@ import React from "react";
 
 export default function StudentForm({
   toggleModal,
-  student,
+  students,
   onChange,
   onSubmit,
-  isEdit,
-}) {
-  const {
-    name,
-    class: className,
-    year,
-    nim,
-    guardian_name: guardianName,
-    birthDate,
-    address,
-    gender,
-  } = student;
+  onUpdate,
+  isUpdate,
+  error,
 
+}) {
   return (
     <div className="modal-overlay">
-      <div class="modal-content overflow-y-scroll rounded">
-        <div class="modal-header">
-          <h5 class="modal-title">
-            {isEdit ? "Edit Student" : "Form New Student"}
+      <div className="modal-content overflow-y-scroll rounded">
+        <div className="modal-header">
+          <h5 className="modal-title">
+            {isUpdate ? "Edit Student" : "Form New Student"}
           </h5>
           <button
             type="button"
-            class="btn-close"
+            className="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-            onClick={() => toggleModal(isEdit)}
+            onClick={() => {toggleModal(isUpdate)}}
           ></button>
         </div>
-        <div class="modal-body">
+        <div className="modal-body">
+          {error && (
+            <div class="alert alert-danger" role="alert">
+              {error}
+            </div>
+          )}
           <form>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
@@ -43,7 +40,7 @@ export default function StudentForm({
                 type="text"
                 name="name"
                 onChange={onChange}
-                value={name}
+                value={students.name}
                 id="name"
                 className="form-control"
                 required
@@ -53,20 +50,19 @@ export default function StudentForm({
               </div>
             </div>
             <div className="mb-3">
-              <label htmlFor="className" className="form-label">
+              <label htmlFor="class" className="form-label">
                 Class
               </label>
               <select
-                class="form-select"
+                className="form-select"
                 aria-label="Default select example"
                 name="class"
-                id="className"
+                id="class"
                 onChange={onChange}
+                value={students.class}
                 required
               >
-                <option selected value="">
-                  Pilih Kelas
-                </option>
+                <option selected>Pilih Kelas</option>
                 <option value="Informatika">Informatika</option>
                 <option value="Akuntansi">Akuntansi</option>
                 <option value="Manajemen">Manajemen</option>
@@ -84,7 +80,7 @@ export default function StudentForm({
                 min="2000"
                 max="2024"
                 onChange={onChange}
-                value={year}
+                value={students.year}
                 className="form-control"
                 required
               />
@@ -99,7 +95,7 @@ export default function StudentForm({
                 name="nim"
                 id="nim"
                 onChange={onChange}
-                value={nim}
+                value={students.nim}
                 className="form-control"
                 required
               />
@@ -114,7 +110,7 @@ export default function StudentForm({
                 name="guardian_name"
                 id="guardianName"
                 onChange={onChange}
-                value={guardianName}
+                value={students.guardian_name}
                 className="form-control"
                 required
               />
@@ -131,7 +127,7 @@ export default function StudentForm({
                 name="birthDate"
                 id="birthDate"
                 onChange={onChange}
-                value={birthDate}
+                value={students.birthDate}
                 className="form-control"
                 required
               />
@@ -147,7 +143,7 @@ export default function StudentForm({
                 name="address"
                 id="address"
                 onChange={onChange}
-                value={address}
+                value={students.address}
                 className="form-control"
                 rows="3"
                 required
@@ -156,53 +152,52 @@ export default function StudentForm({
             </div>
 
             <div className="mb-3">
-              <div class="form-check">
+              <div className="gender">
                 <input
-                  class="form-check-input"
                   type="radio"
-                  name="male"
+                  name="gender"
                   id="male"
-                  onChange={onChange}
                   value="male"
-                />
-                <label class="form-check-label" for="male">
-                  Male
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="female"
-                  id="female"
                   onChange={onChange}
-                  value="female"
+                  checked={students.gender === "male"}
                 />
-                <label class="form-check-label" for="female">
-                  Female
-                </label>
+                <label htmlFor="male">Laki-laki</label>
+                <br />
+                <input
+                  type="radio"
+                  name="gender"
+                  id="female"
+                  value="female"
+                  onChange={onChange}
+                  checked={students.gender === "female"}
+                />
+                <label htmlFor="female">Perempuan</label>
               </div>
             </div>
           </form>
         </div>
-      <div className="modal-footer">
-        {isEdit ? (
-          <button
-            onClick={() => {
-              onSubmit();
-              toggleModal(false);
-            }}
-            type="button"
-            className="btn btn-warning"
-          >
-            <i className="bi bi-pencil-square" /> Update
-          </button>
-        ) : (
-          <button onClick={onSubmit} type="button" className="btn btn-primary">
-            <i className="bi bi-save" /> Submit
-          </button>
-        )}
-      </div>
+        <div className="modal-footer">
+          {isUpdate ? (
+            <button
+              onClick={() => {
+                onUpdate(students.id);
+                toggleModal(false);
+              }}
+              type="button"
+              className="btn btn-warning"
+            >
+              <i className="bi bi-pencil-square" /> Update
+            </button>
+          ) : (
+            <button
+              onClick={onSubmit}
+              type="button"
+              className="btn btn-primary"
+            >
+              <i className="bi bi-save" /> Submit
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

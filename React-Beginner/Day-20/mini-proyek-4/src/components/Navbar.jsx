@@ -17,16 +17,16 @@ export default function Navbar({ toggleModalForm }) {
             {/* <!-- Button trigger modal --> */}
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-primary me-3"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
               onClick={() => toggleModalForm(false)}
             >
-              <i className="bi bi-plus-square"></i>
+              <i className="bi bi-plus-square"></i> Add
             </button>
           </div>
           <form className="d-flex" role="search">
-            <button className="btn" type="submit">
+            <button className="btn btn-search position-absolute end-0 me-3" type="submit">
               <i className="bi bi-search"></i>
             </button>
             <input
