@@ -43,6 +43,21 @@ export default class StudentContainer extends Component {
     }));
     console.log(this.state.currentStudent);
   };
+  else {  
+    this.setState((prevState) => {
+      return {
+        students: [...prevState.students, currentStudent],
+      };
+    });
+    this.setState({
+      currentStudent: {
+        name: "",
+        nim: "",
+        birthDate: "",
+        address: "",
+        guardian: "",
+      },
+    });
 
   toggleModalForm = (isEdit = false) => {
     this.setState({ isEdit, modalForm: !this.state.modalForm });
