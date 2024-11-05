@@ -8,7 +8,6 @@ export default function StudentForm({
   onUpdate,
   isUpdate,
   error,
-
 }) {
   return (
     <div className="modal-overlay">
@@ -22,7 +21,9 @@ export default function StudentForm({
             className="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-            onClick={() => {toggleModal(isUpdate)}}
+            onClick={() => {
+              toggleModal(isUpdate);
+            }}
           ></button>
         </div>
         <div className="modal-body">

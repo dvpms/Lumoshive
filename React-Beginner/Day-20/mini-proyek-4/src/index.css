@@ -94,7 +94,10 @@ table {
 }
 
 .toga-icon{
-  width: 8%;
+  width: 10%;
+}
+.navbar-brand{
+  font-size: 2.5rem !important;
 }
 
 .modal-overlay{

@@ -45,7 +45,7 @@ export default class StudentContainer extends Component {
   };
 
   toggleModalForm = (isEdit = false) => {
-    this.setState({ isEdit: isEdit, modalForm: !this.state.modalForm });
+    this.setState({ isEdit, modalForm: !this.state.modalForm });
   };
 
   handleEditStudent = (student, index) => {
@@ -85,7 +85,7 @@ export default class StudentContainer extends Component {
       this.setState({
         students: updateStudent,
       });
-    } else {
+    } else {  
       this.setState((prevState) => {
         return {
           students: [...prevState.students, currentStudent],

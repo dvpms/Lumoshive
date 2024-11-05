@@ -5,10 +5,10 @@ export default function Navbar({ toggleModalForm }) {
   return (
     <nav className="navbar navbar-expand-lg bg-body-primary">
       <div className="container-fluid d-flex ">
-        <h2 className="navbar-brand me-auto" href="#">
+        <h1 className="navbar-brand me-auto" href="#">
           <strong>Students</strong>
-          {/* <img src={toga} alt="" classNameName="toga-icon"/> */}
-        </h2>
+          <img src={toga} alt="" className="toga-icon"/>
+        </h1>
         <div
           className="collapse navbar-collapse"
           id="navbarSupportedContent d-flex justify-content-center "
