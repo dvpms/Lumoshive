@@ -41,7 +41,7 @@ export default function StudentTable({
                 <td>
                   <button onClick={() => handleDeleteStudent(index)} className="btn btn-sm btn-outline-danger me-2 float-end">
                     <i className="bi bi-trash"></i>
-                  </button>
+                  </button>\
                   <button
                     onClick={() => handleEditStudent(student, index)}
                     className="btn btn-sm btn-outline-warning me-2"

@@ -15,7 +15,7 @@ function App() {
   const addTodo = (e) => {
     e.preventDefault();
     if (inputText.trim() !== "") {
-      setTodos([...todos, { id: Date.now(), text: inputText, completed: false }]);
+      setTodos([...prevTodos, { id: Date.now(), text: inputText, completed: false }]);
       setInputText("");
     }
   };
