@@ -20,7 +20,7 @@ const ActivityForm = ({ showModal, setShowModal }) => {
       // Tampilkan SweetAlert dengan informasi sukses
       await Swal.fire({
         title: "Success!",
-        text: `Activity "${response.data.title}" added successfully!`,
+        text: "Activity added successfully!",
         icon: "success",
       });
 

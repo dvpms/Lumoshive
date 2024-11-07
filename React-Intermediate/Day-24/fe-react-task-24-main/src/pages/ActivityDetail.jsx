@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-const ActivityDetail = () => {
+const ActivityDetail = ({ data, loading, error }) => {
+  const { id } = useParams(); // Mendapatkan id dari URL
+  const navigate = useNavigate();
+  const [post, setPost] = useState(null);
+
+  // Mengambil data post yang sesuai dengan id
+  useEffect(() => {
+    if (data) {
+      const foundPost = data.find((p) => p.id === id);
+      setPost(foundPost);
+    }
+  }, [id, data]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  if (!post) return <p>Post not found</p>;
+
+  console.log(post)
+
   return (
     <div className="mt-4">
-      <h2 className="text-primary">Sample Activity Title</h2>
-      <p className="text-muted">
-        Sample description of the activity goes here.
-      </p>
+      <h2 className="text-primary">{post.title}</h2>
+      <p className="text-muted">{post.description}</p>
       <div className="card border-primary my-4">
         <div className="card-body">
           <p className="card-text">Time Spent: 0 seconds</p>
@@ -23,7 +40,10 @@ const ActivityDetail = () => {
           </div>
         </div>
       </div>
-      <button className="btn btn-secondary mt-3">
+      <button
+        className="btn btn-secondary mt-3"
+        onClick={() => navigate(-1)} // Menggunakan navigate untuk kembali
+      >
         <i className="bi bi-arrow-left"></i> Back to List
       </button>
     </div>
