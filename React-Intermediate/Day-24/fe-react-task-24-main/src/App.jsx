@@ -3,6 +3,8 @@ import axios from "axios";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import ActivityDetail from "./pages/ActivityDetail";
+import Swal from "sweetalert2"; // Pastikan Anda mengimpor Swal
+
 
 export const DataContext = createContext();
 
@@ -25,15 +27,20 @@ const App = () => {
   };
 
   const handleDelete = async (id) => {
-    const res = await axios
-      .delete(`http://localhost:3000/activities/${id}`)
-      .then((res) => {
-        fetchData();
-      })
-      .catch((err) => {
-        console.log(err);
+    try {
+      const res = await axios.delete(`http://localhost:3000/activities/${id}`);
+      await Swal.fire({
+        title: "Success!",
+        text: "Activity deleted successfully!",
+        icon: "success",
       });
+      fetchData();
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+
 
   useEffect(() => {
     fetchData();

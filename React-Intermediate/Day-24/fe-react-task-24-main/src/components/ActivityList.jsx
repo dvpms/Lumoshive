@@ -1,9 +1,27 @@
 import React, { useContext } from "react";
 import { DataContext } from "../App";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ActivityList = ({ handleDelete }) => {
   const { data } = useContext(DataContext);
+
+  const handleConfirmDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleDelete(id);
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+  };
 
   return (
     <ul className="list-group">
@@ -19,7 +37,7 @@ const ActivityList = ({ handleDelete }) => {
             </Link>
             <button
               className="btn btn-danger btn-sm"
-              onClick={() => handleDelete(activity.id)}
+              onClick={() => handleConfirmDelete(activity.id)}
             >
               Delete
             </button>
@@ -31,3 +49,4 @@ const ActivityList = ({ handleDelete }) => {
 };
 
 export default ActivityList;
+
