@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import useTimer from "../hooks/useTimer";
 
 const ActivityDetail = ({ data, loading, error }) => {
+  const { time, startTimer, stopTimer, resetTimer } = useTimer();
   const { id } = useParams(); // Mendapatkan id dari URL
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
@@ -21,20 +23,21 @@ const ActivityDetail = ({ data, loading, error }) => {
   console.log(post)
 
   return (
+    
     <div className="mt-4">
       <h2 className="text-primary">{post.title}</h2>
       <p className="text-muted">{post.description}</p>
       <div className="card border-primary my-4">
         <div className="card-body">
-          <p className="card-text">Time Spent: 0 seconds</p>
+          <p className="card-text">Time Spent: {time} seconds</p>
           <div className="btn-group">
-            <button className="btn btn-outline-success">
+            <button className="btn btn-outline-success" onClick={startTimer}> 
               <i className="bi bi-play-fill"></i> Start
             </button>
-            <button className="btn btn-outline-warning">
+            <button className="btn btn-outline-warning" onClick={stopTimer}>
               <i className="bi bi-pause-fill"></i> Stop
             </button>
-            <button className="btn btn-outline-danger">
+            <button className="btn btn-outline-danger"  onClick={resetTimer}>
               <i className="bi bi-arrow-counterclockwise"></i> Reset
             </button>
           </div>

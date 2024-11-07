@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import useTimer from "../hooks/useTimer";
 
 const useTimer = () => {
   const [time, setTime] = useState(0);
