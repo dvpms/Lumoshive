@@ -32,7 +32,7 @@ const ActivityList = ({ handleDelete }) => {
         >
           <span>{activity.title}</span>
           <div>
-            <Link to={`/${activity.id}`} className="text-decoration-none">
+            <Link to={`/activity/${activity.id}`} className="text-decoration-none">
               <button className="btn btn-secondary btn-sm mx-1">Details</button>
             </Link>
             <button

@@ -51,7 +51,7 @@ const App = () => {
       <div className="container">
         <Routes>
             <Route path="/" element={<Home handleDelete={handleDelete} />} />
-            <Route path="/:id" element={<ActivityDetail data={data}/>} />
+            <Route path="/activity/:id" element={<ActivityDetail data={data}/>} />
         </Routes>
       </div>
     </DataContext.Provider>
