@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ActivityForm from "../components/ActivityForm";
 import ActivityList from "../components/ActivityList";
 
-const Home = ({handleDelete}) => {
+const Home = ({handleDelete, handleSubmit}) => {
   const [showModal, setShowModal] = useState(false); // State untuk mengontrol modal
 
   return (
@@ -15,7 +15,7 @@ const Home = ({handleDelete}) => {
         Add Activity
       </button>
       <ActivityList handleDelete={handleDelete}/>
-      <ActivityForm showModal={showModal} setShowModal={setShowModal} />
+      <ActivityForm showModal={showModal} setShowModal={setShowModal} handleSubmit={handleSubmit} />
     </div>
   );
 };

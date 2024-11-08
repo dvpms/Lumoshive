@@ -3,37 +3,19 @@ import { Modal, Button } from "react-bootstrap";
 import axios from "axios"; // Pastikan Anda mengimpor axios
 import Swal from "sweetalert2"; // Pastikan Anda mengimpor Swal
 
-const ActivityForm = ({ showModal, setShowModal }) => {
+const ActivityForm = ({ showModal, setShowModal,handleSubmit }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Mencegah perilaku default form
 
+  const handleForm = async (e) => {
+    e.preventDefault();
     try {
-      // Lakukan POST request ke API
-      const response = await axios.post("http://localhost:3000/activities", {
-        title,
-        description,
-      });
-
-      // Tampilkan SweetAlert dengan informasi sukses
-      await Swal.fire({
-        title: "Success!",
-        text: "Activity added successfully!",
-        icon: "success",
-      });
-
-      // Tutup modal dan reset form setelah berhasil menambah aktivitas
+      handleSubmit(title, description);
       handleClose();
+      
     } catch (error) {
-      console.error("Error adding activity:", error);
-      // Tampilkan SweetAlert dengan informasi kesalahan
-      Swal.fire({
-        title: "Error!",
-        text: "There was an error adding the activity.",
-        icon: "error",
-      });
+      console.error(error);
     }
   };
 
@@ -49,7 +31,7 @@ const ActivityForm = ({ showModal, setShowModal }) => {
         <Modal.Title>Add Activity</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form onSubmit={handleSubmit}> {/* Pastikan untuk menambahkan onSubmit di sini */}
+        <form onSubmit={handleForm}> {/* Pastikan untuk menambahkan onSubmit di sini */}
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               Title
