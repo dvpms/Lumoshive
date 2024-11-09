@@ -1,11 +1,13 @@
-import React from "react";
+import React,{useContext} from "react";
+import { LanguageContext } from "../containers/StudentContainer";
 
 export default function StudentDetail({toggleModalDetail, student}){
+    const { language } = useContext(LanguageContext);
     return(
         <div className="modal-overlay">
             <div class="modal-content">
                 <div class="modal-header"> 
-                    <h5 class="modal-title">Student Detail</h5>
+                    <h5 class="modal-title">{language === "id" ? "Detail Siswa" : "Student Detail"}</h5>
                     <button
                     type="button"
                     class="btn-close"
@@ -16,28 +18,28 @@ export default function StudentDetail({toggleModalDetail, student}){
                 </div>
                 <div className="modal-body">
                 <p>
-                    <strong>Name: </strong> {student.name}
+                    <strong>{language === "id" ? "Nama: " : "Name: "} </strong> {student.name}
                 </p>
                 <p>
-                    <strong>Class: </strong> {student.class}
+                    <strong>{language === "id" ? "Kelas: " : "Class: "} </strong> {student.class}
                 </p>
                 <p>
-                    <strong>NIM: </strong> {student.nim}
+                    <strong>{language === "id" ? "NIM: " : "NIM: "} </strong> {student.nim}
                 </p>
                 <p>
-                    <strong>Gender: </strong> {student.gender}
+                    <strong>{language === "id" ? "Jenis Kelamin: " : "Gender: "} </strong> {student.gender}
                 </p>
                 <p>
-                    <strong>Year: </strong> {student.year}
+                    <strong>{language === "id" ? "Tahun: " : "Year: "} </strong> {student.year}
                 </p>
                 <p>
-                    <strong>Guardian Name: </strong> {student.guardian_name}
+                    <strong>{language === "id" ? "Nama Wali: " : "Guardian Name: "} </strong> {student.guardian_name}
                 </p>
                 <p>
-                    <strong>Birth Date: </strong> {student.birthDate}
+                    <strong>{language === "id" ? "Tanggal Lahir: " : "Birth Date: "} </strong> {student.birthDate}
                 </p>
                 <p>
-                    <strong>Address:  </strong> {student.address}
+                    <strong>{language === "id" ? "Alamat: " : "Address: "} </strong> {student.address}
                 </p>
                 </div>
             </div>

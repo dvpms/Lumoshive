@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+import { LanguageContext } from "../containers/StudentContainer";
 
 export default function StudentForm({
-  toggleModal,
+  toggleModalForm,
   students,
   onChange,
-  onSubmit,
+  handleAddStudent,
   onUpdate,
   isUpdate,
   error,
 }) {
+  const { language } = useContext(LanguageContext);
   return (
     <div className="modal-overlay">
       <div className="modal-content overflow-y-scroll rounded">
         <div className="modal-header">
           <h5 className="modal-title">
-            {isUpdate ? "Edit Student" : "Form New Student"}
+            {language === "id"
+              ? isUpdate
+                ? "Form Edit Siswa"
+                : "Form Tambah Siswa"
+              : isUpdate
+              ? "Form Edit Student"
+              : "Form Add Student"}
           </h5>
           <button
             type="button"
@@ -22,7 +30,7 @@ export default function StudentForm({
             data-bs-dismiss="modal"
             aria-label="Close"
             onClick={() => {
-              toggleModal(isUpdate);
+              toggleModalForm(isUpdate);
             }}
           ></button>
         </div>
@@ -35,7 +43,7 @@ export default function StudentForm({
           <form>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
-                Student Name
+                {language === "id" ? "Nama Siswa" : "Student Name"}
               </label>
               <input
                 type="text"
@@ -47,12 +55,14 @@ export default function StudentForm({
                 required
               />
               <div className="invalid-feedback">
-                Please enter your student name
+                {language === "id"
+                  ? "Mohon masukkan nama Anda"
+                  : "Please enter your name"}
               </div>
             </div>
             <div className="mb-3">
               <label htmlFor="class" className="form-label">
-                Class
+                {language === "id" ? "Kelas" : "Class"}
               </label>
               <select
                 className="form-select"
@@ -63,16 +73,30 @@ export default function StudentForm({
                 value={students.class}
                 required
               >
-                <option selected>Pilih Kelas</option>
-                <option value="Informatika">Informatika</option>
-                <option value="Akuntansi">Akuntansi</option>
-                <option value="Manajemen">Manajemen</option>
+                <option selected>
+                  {language === "id"
+                    ? "Pilih Kelas"
+                    : "Please enter your class"}
+                </option>
+                <option value="Informatika">
+                  {language === "id" ? "Informatika" : "Informatics"}
+                </option>
+                <option value="Akuntansi">
+                  {language === "id" ? "Akuntansi" : "Accounting"}
+                </option>
+                <option value="Manajemen">
+                  {language === "id" ? "Manajemen" : "Management"}
+                </option>
               </select>
-              <div className="invalid-feedback">Please select your class</div>
+              <div className="invalid-feedback">
+                {language === "id"
+                  ? "Mohon pilih kelas Anda"
+                  : "Please select your class"}
+              </div>
             </div>
             <div className="mb-3">
               <label htmlFor="year" className="form-label">
-                Year
+                {language === "id" ? "Tahun" : "Year"}
               </label>
               <input
                 type="number"
@@ -85,7 +109,11 @@ export default function StudentForm({
                 className="form-control"
                 required
               />
-              <div className="invalid-feedback">Please enter your year</div>
+              <div className="invalid-feedback">
+                {language === "id"
+                  ? "Mohon masukkan tahun Anda"
+                  : "Please enter your year"}
+              </div>
             </div>
             <div className="mb-3">
               <label htmlFor="nim" className="form-label">
@@ -100,11 +128,15 @@ export default function StudentForm({
                 className="form-control"
                 required
               />
-              <div className="invalid-feedback">Please enter your NIM</div>
+              <div className="invalid-feedback">
+                {language === "id"
+                  ? "Mohon masukkan NIM Anda"
+                  : "Please enter your NIM"}
+              </div>
             </div>
             <div className="mb-3">
               <label htmlFor="guardianName" className="form-label">
-                Guardian Name
+                {language === "id" ? "Nama Wali" : "Guardian Name"}
               </label>
               <input
                 type="text"
@@ -116,12 +148,14 @@ export default function StudentForm({
                 required
               />
               <div className="invalid-feedback">
-                Please enter your guardian name
+                {language === "id"
+                  ? "Mohon masukkan nama wali Anda"
+                  : "Please enter your guardian name"}
               </div>
             </div>
             <div className="mb-3">
               <label htmlFor="birthDate" className="form-label">
-                Birth Date
+                {language === "id" ? "Tanggal Lahir" : "Birth Date"}
               </label>
               <input
                 type="date"
@@ -133,12 +167,14 @@ export default function StudentForm({
                 required
               />
               <div className="invalid-feedback">
-                Please enter your birth date
+                {language === "id"
+                  ? "Mohon masukkan tanggal lahir Anda"
+                  : "Please enter your birth date"}
               </div>
             </div>
             <div className="mb-3">
               <label htmlFor="address" className="form-label">
-                Address
+                {language === "id" ? "Alamat" : "Address"}
               </label>
               <textarea
                 name="address"
@@ -149,7 +185,11 @@ export default function StudentForm({
                 rows="3"
                 required
               ></textarea>
-              <div className="invalid-feedback">Please enter your address</div>
+              <div className="invalid-feedback">
+                {language === "id"
+                  ? "Mohon masukkan alamat Anda"
+                  : "Please enter your address"}
+              </div>
             </div>
 
             <div className="mb-3">
@@ -162,7 +202,9 @@ export default function StudentForm({
                   onChange={onChange}
                   checked={students.gender === "male"}
                 />
-                <label htmlFor="male">Laki-laki</label>
+                <label htmlFor="male">
+                  {language === "id" ? "Laki-laki" : "Male"}
+                </label>
                 <br />
                 <input
                   type="radio"
@@ -172,7 +214,9 @@ export default function StudentForm({
                   onChange={onChange}
                   checked={students.gender === "female"}
                 />
-                <label htmlFor="female">Perempuan</label>
+                <label htmlFor="female">
+                  {language === "id" ? "Perempuan" : "Female"}{" "}
+                </label>
               </div>
             </div>
           </form>
@@ -182,20 +226,25 @@ export default function StudentForm({
             <button
               onClick={() => {
                 onUpdate(students.id);
-                toggleModal(false);
+                toggleModalForm(false);
               }}
               type="button"
               className="btn btn-warning"
             >
-              <i className="bi bi-pencil-square" /> Update
+              <i className="bi bi-pencil-square" />{" "}
+              {language === "id" ? "Perbarui" : "Update"}
             </button>
           ) : (
             <button
-              onClick={onSubmit}
+              onClick={(e) => {
+                handleAddStudent(e);
+                toggleModalForm(false);
+              }}
               type="button"
               className="btn btn-primary"
             >
-              <i className="bi bi-save" /> Submit
+              <i className="bi bi-save" />{" "}
+              {language === "id" ? "Kirim" : "Submit"}
             </button>
           )}
         </div>

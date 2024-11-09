@@ -1,146 +1,82 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, createContext } from "react";
+import PropTypes from "prop-types";
 import Navbar from "../components/Navbar";
 import StudentList from "../components/StudentList";
 import StudentForm from "../components/StudentForm";
 import StudentDetail from "../components/StudentDetail";
-import {
-  fetchStudents,
-  addStudent,
-  deleteStudent,
-  detailStudent,
-  updateStudent,
-} from "../utils/api";
+import useAPI from "../hooks/useAPI";
 
-export default class StudentContainer extends Component {
-  state = {
-    modalForm: false,
-    students: [],
-    detailStudent: false,
-    isUpdate: false,
-    currentStudent: {
-      name: "",
-      class: "",
-      year: "",
-      nim: "",
-      guardian_name: "",
-      birthDate: "",
-      address: "",
-      gender: "",
-    },
-    error: null,
+export const LanguageContext = createContext();
+
+const StudentContainer = () => {
+  const {
+    fetchStudents,
+    addStudent,
+    deleteStudent,
+    detailStudentAPI,
+    updateStudent,
+  } = useAPI();
+
+  const [modalForm, setModalForm] = useState(false);
+  const [students, setStudents] = useState([]);
+  const [detailStudent, setDetailStudent] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [currentStudent, setCurrentStudent] = useState({
+    name: "",
+    class: "",
+    year: "",
+    nim: "",
+    guardian_name: "",
+    birthDate: "",
+    address: "",
+    gender: "",
+  });
+  const [error, setError] = useState(null);
+
+  const [language, setLanguage] = useState("id"); // default bahasa Indonesia
+
+  const changeLanguage = (language) => {
+    setLanguage(language);
   };
-
-  componentDidMount() {
-    this.getStudents();
-  }
-
-  async getStudents() {
+  const getStudents = async () => {
     try {
       const students = await fetchStudents();
-      this.setState({ students: students.data });
+      setStudents(students.data);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
-  handleInputChange = (event) => {
+  useEffect(() => {
+    getStudents();
+  }, []);
+
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
-    this.setState((prevState) => ({
-      currentStudent: {
-        ...prevState.currentStudent,
-        [name]: value,
-      },
+    setCurrentStudent((prevState) => ({
+      ...prevState,
+      [name]: value,
     }));
   };
 
-  handleDetail = (id) => {
-    detailStudent(id)
-      .then((res) => {
-        this.setState({ currentStudent: res.data });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    this.toggleModalDetail();
+  const handleDetail = async (id) => {
+    try {
+      const res = await detailStudentAPI(id);
+      setCurrentStudent(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+    toggleModalDetail();
   };
 
-  toggleModalDetail = () => {
-    this.setState({ detailStudent: !this.state.detailStudent });
+  const toggleModalDetail = () => {
+    setDetailStudent(!detailStudent);
   };
 
-  handleAddStudent = (e) => {
-    e.preventDefault();
-    addStudent(this.state.currentStudent)
-      .then((res) => {
-        this.getStudents();
-        this.setState({
-          currentStudent: {
-            name: "",
-            class: "",
-            year: "",
-            nim: "",
-            guardian_name: "",
-            birthDate: "",
-            address: "",
-            gender: "",
-          },
-        });
-        this.toggleModalForm();
-        console.log(res);
-      })
-      .catch((err) => {
-        this.setState({
-          error: err.response.data.message,
-        });
-      });
-  };
-
-  handleDelete = (id) => {
-    deleteStudent(id)
-      .then((res) => {
-        this.getStudents();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  handleEdit = (id) => {
-    this.toggleModalForm();
-    this.setState({ isUpdate: true });
-    detailStudent(id)
-      .then((res) => {
-        this.setState({ currentStudent: res.data });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-      this.setState({
-        currentStudent: {
-          name: "",
-          class: "",
-          year: "",
-          nim: "",
-          guardian_name: "",
-          birthDate: "",
-          address: "",
-          gender: "",
-        }
-      })
-  };
-
-  handleUpdateStudent = (id) => {
-    updateStudent(id, this.state.currentStudent)
-      .then((res) => {
-        this.getStudents();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  toggleModalForm = (isUpdate = false) => {
-    this.setState({isUpdate, modalForm: !this.state.modalForm, currentStudent: {
+  const toggleModalForm = (isUpdate = false) => {
+    setIsUpdate(isUpdate);
+    setModalForm(!modalForm);
+    setCurrentStudent({
       name: "",
       class: "",
       year: "",
@@ -149,45 +85,132 @@ export default class StudentContainer extends Component {
       birthDate: "",
       address: "",
       gender: "",
-    }});
+    });
   };
 
-  render() {
-    return (
+  const handleAddStudent = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await addStudent(currentStudent);
+      setCurrentStudent({
+        name: "",
+        class: "",
+        year: "",
+        nim: "",
+        guardian_name: "",
+        birthDate: "",
+        address: "",
+        gender: "",
+      });
+      getStudents();
+      toggleModalForm(  );
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+      setError(err.response);
+    }
+  };
+  const handleDelete = async (id) => {
+    try {
+      await deleteStudent(id);
+      getStudents();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleEdit = async (id) => {
+    try {
+      toggleModalForm();
+      setIsUpdate(true);
+      const res = await detailStudentAPI(id);
+      setCurrentStudent(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleUpdateStudent = async (id) => {
+    try {
+      await updateStudent(id, currentStudent);
+      getStudents();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return (
+    <LanguageContext.Provider value={{ language, changeLanguage }}>
       <div className="container student-container rounded-5">
         <div className="col p-2">
-          <Navbar toggleModalForm={this.toggleModalForm} />
+          <Navbar
+            toggleModalForm={toggleModalForm}
+            changeLanguage={changeLanguage}
+          />
         </div>
-        {this.state.modalForm && (
+        {modalForm && (
           <StudentForm
-            toggleModal={this.toggleModalForm}
-            students={this.state.currentStudent}
-            onChange={this.handleInputChange}
-            onSubmit={this.handleAddStudent}
-            error={this.state.error}
-            isUpdate={this.state.isUpdate}
-            onUpdate={this.handleUpdateStudent}
+            toggleModalForm={toggleModalForm}
+            students={currentStudent}
+            onChange={handleInputChange}
+            handleAddStudent={handleAddStudent}
+            error={error}
+            isUpdate={isUpdate}
+            onUpdate={handleUpdateStudent}
           />
         )}
-        {this.state.detailStudent && (
+        {detailStudent && (
           <StudentDetail
-            toggleModal={this.toggleModalForm}
-            student={this.state.currentStudent}
-            toggleModalDetail={this.toggleModalDetail}
+            toggleModal={toggleModalForm}
+            student={currentStudent}
+            toggleModalDetail={toggleModalDetail}
           />
         )}
         <div className="col list-container">
           <StudentList
-            students={this.state.students}
-            onDelete={this.handleDelete}
-            onDetail={this.handleDetail}
-            onUpdate={this.handleUpdateStudent}
-            handleEdit={this.handleEdit}
-
-
+            students={students}
+            onDelete={handleDelete}
+            onDetail={handleDetail}
+            onUpdate={handleUpdateStudent}
+            handleEdit={handleEdit}
           />
         </div>
       </div>
-    );
-  }
-}
+    </LanguageContext.Provider>
+  );
+};
+
+StudentContainer.propTypes = {
+  toggleModalForm: PropTypes.func.isRequired,
+  students: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      class: PropTypes.string,
+      year: PropTypes.string,
+      nim: PropTypes.string,
+      guardian_name: PropTypes.string,
+      birthDate: PropTypes.string,
+      address: PropTypes.string,
+      gender: PropTypes.string,
+    })
+  ),
+  onDelete: PropTypes.func.isRequired,
+  onDetail: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  handleEdit: PropTypes.func.isRequired,
+  toggleModalDetail: PropTypes.func.isRequired,
+  student: PropTypes.shape({
+    name: PropTypes.string,
+    class: PropTypes.string,
+    year: PropTypes.string,
+    nim: PropTypes.string,
+    guardian_name: PropTypes.string,
+    birthDate: PropTypes.string,
+    address: PropTypes.string,
+    gender: PropTypes.string,
+  }),
+  error: PropTypes.string,
+  isUpdate: PropTypes.bool.isRequired,
+};
+
+export default StudentContainer;
+

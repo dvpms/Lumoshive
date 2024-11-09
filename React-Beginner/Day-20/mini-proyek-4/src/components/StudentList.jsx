@@ -18,7 +18,7 @@ export default function StudentList({ students, onDelete, onDetail, handleEdit }
               )}
             </div>
             <div className="title-profile">
-              <p className="fs-6">{student.name}</p>
+              <p className="fs-6">{student.name.split(" ")[0]}</p>
               <p className="fs-6">{student.nim}</p>
               <p className="fs-6">{student.class}</p>
             </div>
