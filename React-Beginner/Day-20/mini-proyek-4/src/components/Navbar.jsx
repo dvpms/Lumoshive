@@ -30,7 +30,7 @@ export default function Navbar({ toggleModalForm }) {
               data-bs-target="#exampleModal"
               onClick={() => toggleModalForm()}
             >
-              <i className="bi bi-plus-square"></i> {language === "id" ? " Tambah" : "Add"}
+              <i className="bi bi-plus-square"></i> {language === "id" ? "  Tambah" : "Add"}
             </button>
             <button
               type="button"

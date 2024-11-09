@@ -36,7 +36,7 @@ export default function StudentDetail({toggleModalDetail, student}){
                     <strong>{language === "id" ? "Nama Wali: " : "Guardian Name: "} </strong> {student.guardian_name}
                 </p>
                 <p>
-                    <strong>{language === "id" ? "Tanggal Lahir: " : "Birth Date: "} </strong> {student.birthDate}
+                    <strong>{language === "id" ? "Tanggal Lahir: " : "Birth Date: "} </strong> {new Date(student.birthDate).toLocaleDateString(language === "id" ? 'id' : 'en', { year: 'numeric', month: 'long', day: 'numeric' })}
                 </p>
                 <p>
                     <strong>{language === "id" ? "Alamat: " : "Address: "} </strong> {student.address}

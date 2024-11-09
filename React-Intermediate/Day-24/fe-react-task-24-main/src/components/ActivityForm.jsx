@@ -3,17 +3,15 @@ import { Modal, Button } from "react-bootstrap";
 import axios from "axios"; // Pastikan Anda mengimpor axios
 import Swal from "sweetalert2"; // Pastikan Anda mengimpor Swal
 
-const ActivityForm = ({ showModal, setShowModal,handleSubmit }) => {
+const ActivityForm = ({ showModal, setShowModal, handleSubmit }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
 
   const handleForm = async (e) => {
     e.preventDefault();
     try {
       handleSubmit(title, description);
       handleClose();
-      
     } catch (error) {
       console.error(error);
     }
@@ -31,7 +29,9 @@ const ActivityForm = ({ showModal, setShowModal,handleSubmit }) => {
         <Modal.Title>Add Activity</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form onSubmit={handleForm}> {/* Pastikan untuk menambahkan onSubmit di sini */}
+        <form onSubmit={handleForm}>
+          {" "}
+          {/* Pastikan untuk menambahkan onSubmit di sini */}
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               Title
@@ -58,7 +58,9 @@ const ActivityForm = ({ showModal, setShowModal,handleSubmit }) => {
               required // Tambahkan required jika ingin membuat field ini wajib
             ></textarea>
           </div>
-          <Button variant="primary" type="submit"> {/* Ganti onClick menjadi type="submit" */}
+          <Button variant="primary" type="submit">
+            {" "}
+            {/* Ganti onClick menjadi type="submit" */}
             Add
           </Button>
         </form>

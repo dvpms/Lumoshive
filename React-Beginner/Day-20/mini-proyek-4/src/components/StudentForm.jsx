@@ -127,6 +127,7 @@ export default function StudentForm({
                 value={students.nim}
                 className="form-control"
                 required
+                maxLength={9}
               />
               <div className="invalid-feedback">
                 {language === "id"

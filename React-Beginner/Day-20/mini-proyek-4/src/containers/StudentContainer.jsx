@@ -103,11 +103,11 @@ const StudentContainer = () => {
         gender: "",
       });
       getStudents();
-      toggleModalForm(  );
+      toggleModalForm();
       console.log(res);
     } catch (err) {
       console.log(err);
-      setError(err.response);
+      setError(err.response.data.msg);
     }
   };
   const handleDelete = async (id) => {
