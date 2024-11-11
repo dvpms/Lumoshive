@@ -11,7 +11,7 @@ const HeroSection = () => {
             alt="Large Hero"
             className="w-full h-full object-cover"
           />
-          <div className="absolutebottom-0 left-0 p-4 bg-gradient-to-t from-black to-transparent text-white">
+          <div className="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black to-transparent text-white">
             <h2 className="text-xl font-bold">
               Persiapan IFW 2024? Tokopedia Fashion Market x Indonesia Fashion
               Week Punya Kejutan Buat Kamu!
