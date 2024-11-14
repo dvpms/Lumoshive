@@ -10,3 +10,5 @@ Gunakan flag --prefer-offline: Flag ini memungkinkan npm untuk menggunakan paket
 
 Mengubah json menjadi dummy data untuk di pakai
     npx json-server db.json
+
+    
