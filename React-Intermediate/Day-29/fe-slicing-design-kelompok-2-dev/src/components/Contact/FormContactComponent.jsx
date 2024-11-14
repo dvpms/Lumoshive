@@ -128,10 +128,10 @@ const FormContactComponent = ({ page }) => {
               </div>
               <h5 className="fw-bold text-center mb-3">Follows Us</h5>
               <div className="d-flex flex-row mb-3 justify-content-center text-white">
-                <i className="border bg-primary-contact icon-contact rounded bi bi-linkedin fs-4 me-2"></i>
-                <i className="border bg-primary-contact icon-contact rounded bi bi-instagram fs-4 me-2"></i>
-                <i className="border bg-primary-contact icon-contact rounded bi bi-facebook fs-4 me-2"></i>
-                <i className="border bg-primary-contact icon-contact rounded bi bi-twitter fs-4 me-2"></i>
+                <i className="border bg-primary-contact icon-contact rounded bi bi-linkedin fs-4 me-2"><a href="http://" target="_blank" rel="noopener noreferrer"></a></i>
+                <i className="border bg-primary-contact icon-contact rounded bi bi-instagram fs-4 me-2"><a href="http://" target="_blank" rel="noopener noreferrer"></a></i>
+                <i className="border bg-primary-contact icon-contact rounded bi bi-facebook fs-4 me-2"><a href="http://" target="_blank" rel="noopener noreferrer"></a></i>
+                <i className="border bg-primary-contact icon-contact rounded bi bi-twitter fs-4 me-2"><a href="http://" target="_blank" rel="noopener noreferrer"></a></i>
               </div>
             </div>
           </div>
