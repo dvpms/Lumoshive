@@ -33,10 +33,10 @@ const Header = () => {
 
         <div className="media-social">
           <ul className=" flex space-x-4 text-base ">
-            <li><a href=""><i class="bi bi-facebook"></i></a></li>
-            <li><a href=""><i class="bi bi-instagram "></i></a></li>
-            <li><a href=""><i class="bi bi-twitter "></i></a></li>
-            <li><a href=""><i class="bi bi-youtube "></i></a></li>
+            <li><a href=""><i className="bi bi-facebook"></i></a></li>
+            <li><a href=""><i className="bi bi-instagram "></i></a></li>
+            <li><a href=""><i className="bi bi-twitter "></i></a></li>
+            <li><a href=""><i className="bi bi-youtube "></i></a></li>
             </ul>
         </div>
       </div>
