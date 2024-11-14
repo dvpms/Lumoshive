@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /user
+Allow: /
+Sitemap:https://fe-slicing-design-kelompok-2-fukdtjk3u.vercel.app/sitemap.xml
