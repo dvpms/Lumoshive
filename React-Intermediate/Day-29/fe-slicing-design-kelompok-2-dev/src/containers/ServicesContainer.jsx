@@ -5,10 +5,12 @@ import TitlePageComponent from "../components/TitlePage/TitlePageComponent";
 import { servicesData } from "../utils/data";
 import BannerComponent from "../components/Banner/BannerComponent";
 import AboutComponent from "../components/About/AboutComponent";
+import HelmetComponent from "../components/helmetComponent";
 
-const ServicesContainer = () => {
+const ServicesContainer = ({metaData}) => {
   return (
     <>
+      <HelmetComponent metaData={metaData} />
       <AboutComponent title={"Services"} subtitle={"Home / Services"} />
       <HeroSection />
       <TitlePageComponent title="Our Services" description="Our Expertise" />
